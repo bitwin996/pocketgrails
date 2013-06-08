@@ -4,10 +4,7 @@
       <%= link_to "pocketgrails", current_user, id: "logo" %>
       <nav>
         <ul class="nav pull-right">
-          <li><%= link_to "Trending", '/recent' %></li>          
-     <!-- 
-          <li><%= link_to "My Feed", myfeed_path %></li> 
-          <li><%= link_to "Categories", help_path %></li> -->
+
           <li><%= link_to "Collections", collections_path %></li>
           <li><%= link_to "Posts", post_path %></li>  
           <% if signed_in? %>
