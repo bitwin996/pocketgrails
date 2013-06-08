@@ -1,5 +1,10 @@
-Jotpocket1::Application.routes.draw do
-  resources :users
+Pocketgrails::Application.routes.draw do
+  resources :users do
+    member do
+      post 'follow'
+    end
+  end
+
   resources :sessions, only: [:new, :create, :destroy]
   resources :microposts, only: [:create, :destroy]
   #resources :themes, only: [:create, :destroy]

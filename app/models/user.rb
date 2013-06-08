@@ -1,8 +1,7 @@
 class User < ActiveRecord::Base
   attr_accessible :name, :email, :password, :password_confirmation
   has_secure_password
-  has_many :microposts, dependent: :destroy
-  has_many :categories, dependent: :destroy
+  has_many :posts, dependent: :destroy
   has_many :themes, dependent: :destroy
   has_many :categories, dependent: :destroy
 
@@ -13,9 +12,10 @@ class User < ActiveRecord::Base
              class_name: "Relationship", dependent: :destroy
   has_many :followers, through: :reverse_relationships, source: :follower
   
+
   before_save { |user| user.email = email.downcase }
   before_save :create_remember_token
-  
+
   validates :name, presence: true, length: { maximum: 50 }
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :email, presence:   true,
@@ -26,7 +26,7 @@ class User < ActiveRecord::Base
   
   def feed
     # This is preliminary. See "Following users" for the full implementation.
-    #Micropost.where("user_id = ?", id)
+    Post.where("user_id = ?", id)
   end
 
   def following?(other_user)

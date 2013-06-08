@@ -47,8 +47,12 @@
 <a href="#" class="follow-count"><span class="follow-count">0</span> stores</a>
 </li>
 <li>
-<a href="#" class="button wb-primary smallish btn-follow " data-disable-with="Follow" data-method="post" data-remote="true" rel="nofollow" resource="user">Follow</a>
-<a href="#" class="button smallish btn-unfollow wnl-hidden" data-disable-with="Following" data-method="delete" data-remote="true" rel="nofollow" resource="user">Following</a>
+
+<% unless @followed %>
+  <a href="<%= follow_user_path(@user) %>" class="button wb-primary smallish btn-follow " data-disable-with="Follow" data-method="post" data-remote="true" rel="nofollow" resource="user">Follow</a>
+<% else %>
+  <a href="#" class="button smallish btn-unfollow wnl-hidden" data-disable-with="Following" data-method="delete" data-remote="true" rel="nofollow" resource="user">Following</a>
+<% end %>
 </li>
 </ul>
 </div>
