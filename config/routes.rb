@@ -1,4 +1,4 @@
-Jotpocket1::Application.routes.draw do
+Pocketgrails::Application.routes.draw do
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
   resources :microposts, only: [:create, :destroy]
@@ -18,7 +18,7 @@ Jotpocket1::Application.routes.draw do
   match '/about',   to: 'static_pages#about'
   match '/terms', to: 'static_pages#terms'
   #match '/privacy', to: 'static_pages#privacy'
-  match '/post', to: 'static_pages#privacy'
+  match '/privacy', to: 'static_pages#privacy'
   match '/faq', to: 'static_pages#faq'
   
   match '/recent',  to: 'pieces#recent'

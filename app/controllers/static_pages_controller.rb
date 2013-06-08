@@ -34,7 +34,7 @@ class StaticPagesController < ApplicationController
   def myfeed
     if signed_in?
       @user = current_user
-      @posts = @user.posts.paginate(page: params[:page])
+      #@posts = @user.posts.paginate(page: params[:page])
       @categories = @user.categories.paginate(page: params[:page])
       @themes = @user.themes.paginate(page: params[:page])
       @pieces = @user.pieces.paginate(page: params[:page])
