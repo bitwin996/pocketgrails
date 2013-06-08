@@ -1,6 +1,5 @@
 class Piece < ActiveRecord::Base
-  attr_accessible :content, :name, :reference, :theme_id, :user_id, :photo, :photo_cache
-  
+  attr_accessible :content, :name, :reference, :theme_id, :user_id, :photo, :photo_cache, :photo_file_name
   
   belongs_to :theme
   belongs_to :user
