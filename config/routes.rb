@@ -18,7 +18,7 @@ Pocketgrails::Application.routes.draw do
   match '/about',   to: 'static_pages#about'
   match '/terms', to: 'static_pages#terms'
   #match '/privacy', to: 'static_pages#privacy'
-  match '/write', to: 'static_pages#privacy'
+  match '/privacy', to: 'static_pages#privacy'
   match '/faq', to: 'static_pages#faq'
   
   match '/recent',  to: 'pieces#recent'
