@@ -1,5 +1,10 @@
 Pocketgrails::Application.routes.draw do
-  resources :users
+  resources :users do
+    member do
+      post 'follow'
+    end
+  end
+
   resources :sessions, only: [:new, :create, :destroy]
   resources :microposts, only: [:create, :destroy]
   #resources :themes, only: [:create, :destroy]
@@ -18,7 +23,7 @@ Pocketgrails::Application.routes.draw do
   match '/about',   to: 'static_pages#about'
   match '/terms', to: 'static_pages#terms'
   #match '/privacy', to: 'static_pages#privacy'
-  match '/privacy', to: 'static_pages#privacy'
+  match '/post', to: 'static_pages#privacy'
   match '/faq', to: 'static_pages#faq'
   
   match '/recent',  to: 'pieces#recent'

@@ -56,7 +56,20 @@ class UsersController < ApplicationController
     @categories = @user.categories.paginate(page: params[:page])
     @themes = @user.themes.paginate(page: params[:page])
     @pieces = @user.pieces.paginate(page: params[:page])
+    @followed = current_user.followed_users.include? @user
+  end
 
+  def follow
+    @user = User.find(param[:id])
+
+    unless current_user.followed_users.include? @user
+      current_user.follow! @user
+      flash[:success] = "You follow #{@user.name}."
+    else
+      flash[:notice] = "You already follow #{@user.name}."
+    end
+
+    redirect_to @user
   end
   
 private
