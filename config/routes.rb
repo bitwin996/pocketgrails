@@ -22,7 +22,7 @@ Pocketgrails::Application.routes.draw do
   match '/help',    to: 'static_pages#help'
   match '/about',   to: 'static_pages#about'
   match '/terms', to: 'static_pages#terms'
-  #match '/privacy', to: 'static_pages#privacy'
+  match '/privacy', to: 'static_pages#privacy'
   match '/post', to: 'static_pages#privacy'
   match '/faq', to: 'static_pages#faq'
   
