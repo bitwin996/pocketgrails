@@ -3,11 +3,11 @@
   <div class="field">
     <%= f.text_field :name, placeholder: "Create a new category..." %>
   </div>
-  <div class="field">
+  <!--<div class="field">
     
 
   <%= collection_select(:theme, :category_id, Category.all, :id, :name ) %>
-  </div>  
+  </div>  -->
   
   <%= f.submit "Post", class: "btn btn-large btn-primary" %>
 <% end %>

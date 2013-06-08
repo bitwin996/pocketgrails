@@ -14,13 +14,20 @@ def create
   end
   
   def index
-    @themes = current_user.themes.find(params[:id])
+    #@themes = current_user.themes.find(params[:id])
+    @themes = Theme.paginate(page: params[:page])
+
   end
   
   def destroy
     @theme.destroy
     redirect_to root_url
   end
+  
+  def show
+    @theme = Theme.find(params[:id])
+
+  end  
 
   private
   

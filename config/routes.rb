@@ -1,13 +1,13 @@
 Pocketgrails::Application.routes.draw do
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
-  resources :posts, only: [:create]
+  resources :microposts, only: [:create, :destroy]
   #resources :themes, only: [:create, :destroy]
   resources :themes
   
   resources :categories, only: [:create, :destroy]
   #resources :pieces, only: [:create, :destroy]
-
+  resources :pieces
 
   root to: 'static_pages#home'
 
@@ -16,7 +16,7 @@ Pocketgrails::Application.routes.draw do
   match '/signout', to: 'sessions#destroy', via: :delete
   match '/help',    to: 'static_pages#help'
   match '/about',   to: 'static_pages#about'
-  match '/collections', to: 'static_pages#terms'
+  match '/terms', to: 'static_pages#terms'
   #match '/privacy', to: 'static_pages#privacy'
   match '/post', to: 'static_pages#privacy'
   match '/faq', to: 'static_pages#faq'
