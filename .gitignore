@@ -14,6 +14,9 @@
 /log/*.log
 /tmp
 
+# Paperclip
+public/system/**/*
+
 *.DS_Store
 *.swp
 ._*

@@ -5,6 +5,7 @@ class PiecesController < ApplicationController
 
 def create
     @piece = current_user.pieces.build(params[:piece])
+
     if @piece.save
       flash[:success] = "Piece created!"
       redirect_to root_url
@@ -14,10 +15,10 @@ def create
     end
     
     #Added this for paperclip
-    @photo = Piece.new(params[:photo])
-    if @photo.save
-    redirect_to :action => :show, :id => @photo.id
-    end   
+    #@photo = Piece.new(params[:photo])
+    #if @photo.save
+    #redirect_to :action => :show, :id => @photo.id
+    #end   
     
   end
   
