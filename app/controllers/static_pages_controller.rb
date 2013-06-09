@@ -11,21 +11,21 @@ class StaticPagesController < ApplicationController
   end
 
   def help   
-      if signed_in?
+    if signed_in?
       @category  = current_user.categories.build
       #@feed_items = current_user.feed.paginate(page: params[:page])
     end
   end
 
   def terms   
-      if signed_in?
+    if signed_in?
       @theme  = current_user.themes.build
       #@feed_items = current_user.feed.paginate(page: params[:page])
     end
   end
 
   def privacy
-     if signed_in?
+   if signed_in?
       @piece  = current_user.pieces.build
       #@feed_items = current_user.feed.paginate(page: params[:page])
     end

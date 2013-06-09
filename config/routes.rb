@@ -1,8 +1,11 @@
 Pocketgrails::Application.routes.draw do
   resources :users do
+    collection do
+      get :home
+    end
     member do
-      post 'follow'
-      post 'unfollow'
+      post :follow
+      post :unfollow
     end
   end
 

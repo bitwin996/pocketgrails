@@ -48,7 +48,7 @@
 </li>
 <li>
 
-<% unless current_user == @user %>
+<% unless current_user? @user %>
   <% unless current_user.following? @user %>
     <a href="<%= follow_user_path(@user) %>" class="button wb-primary smallish btn-follow " data-disable-with="Follow" data-method="post" data-remote="true" rel="nofollow" resource="user">Follow</a>
   <% else %>
