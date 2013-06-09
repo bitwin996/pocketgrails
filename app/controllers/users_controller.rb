@@ -4,6 +4,11 @@ class UsersController < ApplicationController
   before_filter :correct_user,   only: [:edit, :update]
   before_filter :admin_user,     only: :destroy
   
+  def home
+    @user = current_user
+    render :show
+  end
+
   def index
     @users = User.paginate(page: params[:page])
       respond_with(@users)
