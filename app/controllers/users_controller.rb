@@ -56,13 +56,12 @@ class UsersController < ApplicationController
     @categories = @user.categories.paginate(page: params[:page])
     @themes = @user.themes.paginate(page: params[:page])
     @pieces = @user.pieces.paginate(page: params[:page])
-    @followed = current_user.followed_users.include? @user
   end
 
   def follow
-    @user = User.find(param[:id])
+    @user = User.find(params[:id])
 
-    unless current_user.followed_users.include? @user
+    unless current_user.following? @user
       current_user.follow! @user
       flash[:success] = "You follow #{@user.name}."
     else
@@ -71,7 +70,20 @@ class UsersController < ApplicationController
 
     redirect_to @user
   end
+
+  def unfollow
+    @user = User.find(params[:id])
   
+    unless current_user.following? @user
+      flash[:notice] = "You don't follow #{@user.name}."
+    else
+      current_user.unfollow! @user
+      flash[:success] = "You stop following #{@user.name}."
+    end
+
+    redirect_to @user
+  end
+
 private
     
 

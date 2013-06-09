@@ -2,6 +2,7 @@ Pocketgrails::Application.routes.draw do
   resources :users do
     member do
       post 'follow'
+      post 'unfollow'
     end
   end
 

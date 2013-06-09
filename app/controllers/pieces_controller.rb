@@ -1,9 +1,16 @@
 class PiecesController < ApplicationController
   #before_filter :signed_in_user, only: [:create, :destroy]
-  before_filter :signed_in_user, only: [:index, :edit, :update, :destroy]
+  before_filter :signed_in_user, only: [:index, :edit, :update,
+                                        :new, :create, :destroy]
   before_filter :correct_user,   only: :destroy
 
-def create
+  def new
+     if signed_in?
+      @piece  = current_user.pieces.build
+    end
+  end
+
+  def create
     @piece = current_user.pieces.build(params[:piece])
 
     if @piece.save
@@ -11,15 +18,9 @@ def create
       redirect_to root_url
     else
       @feed_items = []
-      render 'static_pages/privacy'
+      #render 'static_pages/privacy'
+      render :show
     end
-    
-    #Added this for paperclip
-    #@photo = Piece.new(params[:photo])
-    #if @photo.save
-    #redirect_to :action => :show, :id => @photo.id
-    #end   
-    
   end
   
   def index
